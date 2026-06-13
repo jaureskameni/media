@@ -1,0 +1,82 @@
+---
+openapi: "3.0.3"
+info:
+  title: "MEDIA MANAGEMENT REST API"
+  description: "API for managing media fichier"
+  version: "0.0.1-SNAPSHOT"
+paths:
+  /cities:
+    get:
+      tags:
+      - "City"
+      summary: "Get All Cities"
+      description: "Get All Cities"
+      operationId: "getAllCities"
+      responses:
+        "200":
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  $ref: "#/components/schemas/City"
+components:
+  schemas:
+    District:
+      required:
+      - "id"
+      - "cityId"
+      - "name"
+      - "createdAt"
+      type: "object"
+      properties:
+        id:
+          type: "string"
+          format: "uuid"
+        cityId:
+          type: "string"
+          format: "uuid"
+        name:
+          type: "string"
+        createdAt:
+          type: "string"
+          format: "date-time"
+    Quarter:
+      required:
+      - "id"
+      - "cityId"
+      - "districtId"
+      - "name"
+      - "createdAt"
+      type: "object"
+      properties:
+        id:
+          type: "string"
+          format: "uuid"
+        cityId:
+          type: "string"
+          format: "uuid"
+        districtId:
+          type: "string"
+          format: "uuid"
+        name:
+          type: "string"
+        createdAt:
+          type: "string"
+          format: "date-time"
+    City:
+      type: "object"
+      required:
+      - "id"
+      - "name"
+      - "createdAt"
+      properties:
+        id:
+          type: "string"
+          format: "uuid"
+        name:
+          type: "string"
+        createdAt:
+          type: "string"
+          format: "date-time"
