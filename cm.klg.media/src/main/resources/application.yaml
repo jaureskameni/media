@@ -4,7 +4,7 @@ server:
   shutdown: "graceful"
 spring:
   application:
-    name: "madia"
+    name: "media"
   security:
     oauth2:
       resourceserver:
@@ -24,7 +24,7 @@ spring:
         type:
           preferred_uuid_jdbc_type: "varchar"
   liquibase:
-    change-log: "classpath:cm/klg/map/repository/liquibase/changelog/master.xml"
+    change-log: "classpath:cm/klg/media/repository/liquibase/changelog/master.xml"
     enabled: true
 jk-dev:
   events-messaging:
@@ -36,6 +36,14 @@ jk-dev:
       enabled: "${DOMAIN_EVENTS_MESSAGING_PUBLISHER_ENABLED:false}"
       batchSize: "${SCHEDULER_EVENT_NOTIFICATION_BATCH_SIZE:1000}"
       frequency: "${SCHEDULER_EVENT_NOTIFICATION_FREQUENCY:5000}"
+  storage:
+    max-document-size-in-bytes: "${STORAGE_MAX_DOCUMENT_SIZE_IN_BYTES:5242880}"
+    s3:
+      url: "${STORAGE_S3_URI:http://localhost:9000}"
+      credentials:
+        name: "${STORAGE_S3_ACCESS_NAME}"
+        secret: "${STORAGE_S3_ACCESS_SECRET}"
+      bucket-name: "${STORAGE_S3_BUCKET_NAME:zlink}"
 logging:
   level:
     root: "INFO"

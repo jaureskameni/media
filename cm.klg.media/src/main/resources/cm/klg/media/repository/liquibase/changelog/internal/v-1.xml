@@ -6,6 +6,17 @@
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
 
 	<changeSet id="MEDIA-1:1" author="kameni.nguematcha">
-
+		<createTable tableName="t_document">
+			<column name="c_id" type="varchar(36)">
+				<constraints nullable="false" primaryKey="true"
+					primaryKeyName="pk_t_document" />
+			</column>
+			<column name="c_name" type="varchar(255)" />
+			<column name="c_size" type="bigint" />
+			<column name="c_visibility" type="varchar(10)" />
+			<column name="c_type" type="varchar(15)" />
+			<column name="c_status" type="varchar(15)" />
+			<column name="c_createdAt" type="timestamp" />
+		</createTable>
 	</changeSet>
 </databaseChangeLog>
