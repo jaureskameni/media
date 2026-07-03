@@ -18,7 +18,7 @@ val commonBuildDir = "$rootDir/../submodule/cm.klg.common.build"
 ext["nullawayAnnotatedPackages"] = "cm.klg.media"
 ext["nullawayExcludedClasses"] =
     listOf(
-        "cm.klg.media.ServiceProviderApplication",
+        "cm.klg.media.MediaApplication",
         "cm.klg.media.config",
     )
 
@@ -49,6 +49,7 @@ dependencies {
     implementation(libs.slf4jApi)
     implementation(libs.liquibaseCore)
     implementation(libs.mapstruct)
+    implementation("io.minio:minio:8.5.3")
 
     compileOnly(libs.lombok)
     compileOnly(libs.jspecify)
@@ -90,5 +91,15 @@ val mainOpenApiGenerate by tasks.registering(GenerateTask::class) {
 tasks.compileJava {
     dependsOn(
         mainOpenApiGenerate,
+    )
+}
+
+tasks.withType<JavaCompile>().configureEach {
+
+    options.compilerArgs.addAll(
+        listOf(
+            "--add-reads",
+            "cm.klg.media.main=ALL-UNNAMED",
+        ),
     )
 }
