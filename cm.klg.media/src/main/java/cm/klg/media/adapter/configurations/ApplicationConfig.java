@@ -10,6 +10,6 @@ public class ApplicationConfig implements Configurations {
 
   @Override
   public long getMaxDocumentSizeInBytes() {
-    return storageProperties.maxDocumentSizeInBytes().toBytes();
+    return storageProperties.maxDocumentSizeInBytes();
   }
 }
