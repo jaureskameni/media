@@ -7,6 +7,6 @@
 
 	<changeSet id="MEDIA-2:1" author="kameni.nguematcha">
 		<renameColumn tableName="t_document"
-			oldColumnName="c_c_createdAt" newColumnName="c_created_at" />
+			oldColumnName="c_createdAt" newColumnName="c_created_at" />
 	</changeSet>
 </databaseChangeLog>
