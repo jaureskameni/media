@@ -47,7 +47,7 @@ public class DocumentJpa {
   @NonNull
   String status;
 
-  @Column(name = "c_createdAt")
+  @Column(name = "c_created_at")
   @NonNull
   LocalDateTime createdAt;
 
